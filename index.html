@@ -11,7 +11,6 @@
 </head>
 <body>
 
-  <!-- ====== NAV ====== -->
   <nav class="top-nav" aria-label="Navegación principal">
     <div class="nav-inner">
       <a href="#hero" class="nav-brand" aria-label="Inicio">HUMANO</a>
@@ -22,13 +21,13 @@
         <li><a href="#dimensiones">Framework</a></li>
         <li><a href="#caso">Caso Adult Census</a></li>
         <li><a href="#dashboard">Auditoría</a></li>
+        <li><a href="#decision">Decisión</a></li>
         <li><a href="#semaforo">Semáforo</a></li>
         <li><a href="https://www.kaggle.com/code/alejandramontana/humano-adult-census-kaggle" target="_blank" rel="noopener">Kaggle ↗</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- ====== HERO ====== -->
   <header id="hero" class="hero">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="container hero-content">
@@ -47,7 +46,6 @@
     </div>
   </header>
 
-  <!-- ====== DIMENSIONES ====== -->
   <section id="dimensiones" class="section">
     <div class="container">
       <h2 class="section-title">Las seis dimensiones</h2>
@@ -58,49 +56,54 @@
           <span class="dim-letter" aria-hidden="true">H</span>
           <h3>Humanizar el propósito</h3>
           <p class="dim-question">¿Para qué se utilizará la IA y qué consecuencias puede producir?</p>
-          <p class="dim-body">Se analiza qué variable intenta predecir el modelo, para qué podría utilizarse y cuáles serían las consecuencias de una predicción incorrecta. En el laboratorio Adult Census, una predicción errónea de ingresos podría afectar decisiones de crédito, empleo o acceso a servicios.</p>
+          <p class="dim-body">Define el propósito del sistema, su contexto de uso y las consecuencias de una decisión incorrecta.</p>
+          <p class="dim-evidence"><span class="evidence-label">Evidencia</span> Propósito del caso</p>
         </article>
 
         <article class="dim-card" data-letter="U" tabindex="0">
           <span class="dim-letter" aria-hidden="true">U</span>
           <h3>Ubicar personas e impactos</h3>
           <p class="dim-question">¿Quién está representado y quién puede verse afectado?</p>
-          <p class="dim-body">Se explora la representación de grupos en los datos: distribución por sexo, categoría racial y diferencias en los resultados observados. Grupos minoritarios pueden estar sub-representados y recibir predicciones menos precisas.</p>
+          <p class="dim-body">Identifica quién está representado en los datos y cómo cambian los resultados entre grupos.</p>
+          <p class="dim-evidence"><span class="evidence-label">Evidencia</span> Representación · Selection Rate</p>
         </article>
 
         <article class="dim-card" data-letter="M" tabindex="0">
           <span class="dim-letter" aria-hidden="true">M</span>
           <h3>Minimizar datos y riesgos</h3>
           <p class="dim-question">¿Qué datos son realmente necesarios y qué riesgos pueden introducir?</p>
-          <p class="dim-body">Se revisan atributos sensibles (sexo, raza), variables potencialmente innecesarias y posibles relaciones indirectas o proxies que puedan reintroducir sesgos incluso si se eliminan los atributos sensibles.</p>
+          <p class="dim-body">Revisa si los datos utilizados son necesarios y si existen atributos sensibles o posibles proxies.</p>
+          <p class="dim-evidence"><span class="evidence-label">Evidencia</span> Atributos sensibles · Posibles proxies</p>
         </article>
 
         <article class="dim-card" data-letter="A" tabindex="0">
           <span class="dim-letter" aria-hidden="true">A</span>
           <h3>Asegurar autonomía y transparencia</h3>
           <p class="dim-question">¿Podemos explicar y cuestionar las decisiones del sistema?</p>
-          <p class="dim-body">Se construye una regresión logística y se analizan las variables con mayor influencia, los coeficientes del modelo y la capacidad de explicar las predicciones. Un modelo explicable permite que las personas afectadas cuestionen las decisiones.</p>
+          <p class="dim-body">Evalúa si el funcionamiento del modelo puede explicarse y cuestionarse.</p>
+          <p class="dim-evidence"><span class="evidence-label">Evidencia</span> Modelo interpretable · Coeficientes</p>
         </article>
 
         <article class="dim-card" data-letter="N" tabindex="0">
           <span class="dim-letter" aria-hidden="true">N</span>
           <h3>Nombrar responsables</h3>
           <p class="dim-question">¿Quién responde por los datos, el modelo y sus decisiones?</p>
-          <p class="dim-body">Se propone una estructura de gobernanza que identifica responsables para: propósito del sistema, datos, desarrollo, validación, decisiones, reclamaciones y monitoreo.</p>
+          <p class="dim-body">Define quién responde por los datos, el modelo, la decisión y el monitoreo.</p>
+          <p class="dim-evidence"><span class="evidence-label">Evidencia</span> Gobernanza</p>
         </article>
 
         <article class="dim-card" data-letter="O" tabindex="0">
           <span class="dim-letter" aria-hidden="true">O</span>
           <h3>Observar, auditar y corregir</h3>
           <p class="dim-question">¿El sistema funciona de manera consistente entre grupos y qué hacemos cuando encontramos diferencias?</p>
-          <p class="dim-body">Se calculan métricas globales y por grupos (Accuracy, Selection Rate, FPR, FNR) y se compara un modelo con atributos sensibles contra uno sin ellos, demostrando que eliminar variables no es suficiente.</p>
+          <p class="dim-body">Compara desempeño y errores entre grupos, interviene y vuelve a auditar.</p>
+          <p class="dim-evidence"><span class="evidence-label">Evidencia</span> Accuracy · FPR · FNR · Selection Rate</p>
         </article>
 
       </div>
     </div>
   </section>
 
-  <!-- ====== CASO DEMOSTRATIVO ====== -->
   <section id="caso" class="section section-alt">
     <div class="container">
       <h2 class="section-title">Caso demostrativo · Adult Census</h2>
@@ -108,17 +111,17 @@
         <div class="caso-text">
           <p>El laboratorio utiliza el dataset <strong>Adult Census Income</strong> del UCI Machine Learning Repository como caso educativo.</p>
           <p><strong>Objetivo técnico:</strong> predecir si el ingreso anual de una persona supera USD&nbsp;50.000.</p>
-          <p class="caso-disclaimer">⚠ Este ejercicio no recomienda utilizar este modelo para tomar decisiones reales sobre personas.</p>
+          <p class="caso-disclaimer">Este ejercicio no recomienda utilizar este modelo para tomar decisiones reales sobre personas.</p>
           <p class="caso-source">Fuente: UCI Adult Dataset · DOI: <code>10.24432/C5XW20</code></p>
         </div>
         <div class="caso-meta" id="caso-meta">
           <div class="meta-card">
             <span class="meta-value" id="meta-registros">—</span>
-            <span class="meta-label">Registros</span>
+            <span class="meta-label">Registros usados en el modelado</span>
           </div>
           <div class="meta-card">
             <span class="meta-value" id="meta-variables">—</span>
-            <span class="meta-label">Variables</span>
+            <span class="meta-label">Variables incluidas en el modelo</span>
           </div>
           <div class="meta-card">
             <span class="meta-value" id="meta-dataset">—</span>
@@ -129,12 +132,49 @@
     </div>
   </section>
 
-  <!-- ====== DASHBOARD ====== -->
-  <section id="dashboard" class="section">
+  <section id="puente" class="section">
+    <div class="container">
+      <h2 class="section-title">De la pregunta a la evidencia</h2>
+      <p class="section-intro">El dashboard no está separado del framework: es evidencia generada para responder HUMANO.</p>
+      <ol class="bridge-list">
+        <li class="bridge-item">
+          <span class="bridge-letter" aria-hidden="true">H</span>
+          <span class="bridge-arrow" aria-hidden="true">→</span>
+          <span class="bridge-text">Propósito del sistema</span>
+        </li>
+        <li class="bridge-item">
+          <span class="bridge-letter" aria-hidden="true">U</span>
+          <span class="bridge-arrow" aria-hidden="true">→</span>
+          <span class="bridge-text">Representación y selección</span>
+        </li>
+        <li class="bridge-item">
+          <span class="bridge-letter" aria-hidden="true">M</span>
+          <span class="bridge-arrow" aria-hidden="true">→</span>
+          <span class="bridge-text">Datos sensibles y proxies</span>
+        </li>
+        <li class="bridge-item">
+          <span class="bridge-letter" aria-hidden="true">A</span>
+          <span class="bridge-arrow" aria-hidden="true">→</span>
+          <span class="bridge-text">Explicabilidad</span>
+        </li>
+        <li class="bridge-item">
+          <span class="bridge-letter" aria-hidden="true">N</span>
+          <span class="bridge-arrow" aria-hidden="true">→</span>
+          <span class="bridge-text">Responsables</span>
+        </li>
+        <li class="bridge-item">
+          <span class="bridge-letter" aria-hidden="true">O</span>
+          <span class="bridge-arrow" aria-hidden="true">→</span>
+          <span class="bridge-text">Métricas de desempeño y error</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="dashboard" class="section section-alt">
     <div class="container">
       <h2 class="section-title">Auditoría HUMANO</h2>
 
-      <!-- KPI -->
       <div class="kpi-grid" id="kpi-grid">
         <div class="kpi-card">
           <span class="kpi-value" id="kpi-acc-orig">—</span>
@@ -146,21 +186,27 @@
         </div>
         <div class="kpi-card">
           <span class="kpi-value" id="kpi-registros">—</span>
-          <span class="kpi-label">Registros usados</span>
+          <span class="kpi-label">Registros usados en el modelado</span>
         </div>
         <div class="kpi-card">
           <span class="kpi-value" id="kpi-variables">—</span>
-          <span class="kpi-label">Variables del modelo</span>
+          <span class="kpi-label">Variables incluidas en el modelo</span>
         </div>
       </div>
 
-      <!-- Auditoría por sexo -->
       <div class="audit-block" id="audit-sex">
         <h3>Auditoría por sexo</h3>
         <div class="table-wrap">
           <table id="table-sex" aria-label="Métricas de auditoría por sexo">
             <thead>
-              <tr><th>Grupo</th><th>N</th><th>Accuracy</th><th>Selection Rate</th><th>FPR</th><th>FNR</th></tr>
+              <tr>
+                <th>Grupo</th>
+                <th>N</th>
+                <th><span class="th-metric">Accuracy <button type="button" class="info-btn" aria-label="Definición de Accuracy"><span aria-hidden="true">i</span><span class="info-tip" role="tooltip">Porcentaje total de predicciones correctas.</span></button></span></th>
+                <th><span class="th-metric">Selection Rate <button type="button" class="info-btn" aria-label="Definición de Selection Rate"><span aria-hidden="true">i</span><span class="info-tip" role="tooltip">Proporción de personas clasificadas con resultado positivo por el modelo.</span></button></span></th>
+                <th><span class="th-metric">FPR <button type="button" class="info-btn" aria-label="Definición de FPR"><span aria-hidden="true">i</span><span class="info-tip" role="tooltip">Entre los casos realmente negativos, proporción clasificada erróneamente como positiva.</span></button></span></th>
+                <th><span class="th-metric">FNR <button type="button" class="info-btn" aria-label="Definición de FNR"><span aria-hidden="true">i</span><span class="info-tip" role="tooltip">Entre los casos realmente positivos, proporción clasificada erróneamente como negativa.</span></button></span></th>
+              </tr>
             </thead>
             <tbody></tbody>
           </table>
@@ -168,71 +214,119 @@
         <div class="chart-container">
           <canvas id="chart-sex" aria-label="Gráfico comparativo de métricas por sexo" role="img"></canvas>
         </div>
+        <div class="observe-box" id="observe-sex" hidden>
+          <h4>¿Qué estamos observando?</h4>
+          <div id="observe-sex-body"></div>
+        </div>
       </div>
 
-      <!-- Auditoría por raza -->
       <div class="audit-block" id="audit-race">
         <h3>Auditoría por categoría racial</h3>
         <div class="table-wrap">
           <table id="table-race" aria-label="Métricas de auditoría por categoría racial">
             <thead>
-              <tr><th>Grupo</th><th>N</th><th>Accuracy</th><th>Selection Rate</th><th>FPR</th><th>FNR</th></tr>
+              <tr>
+                <th>Grupo</th>
+                <th>N</th>
+                <th><span class="th-metric">Accuracy <button type="button" class="info-btn" aria-label="Definición de Accuracy"><span aria-hidden="true">i</span><span class="info-tip" role="tooltip">Porcentaje total de predicciones correctas.</span></button></span></th>
+                <th><span class="th-metric">Selection Rate <button type="button" class="info-btn" aria-label="Definición de Selection Rate"><span aria-hidden="true">i</span><span class="info-tip" role="tooltip">Proporción de personas clasificadas con resultado positivo por el modelo.</span></button></span></th>
+                <th><span class="th-metric">FPR <button type="button" class="info-btn" aria-label="Definición de FPR"><span aria-hidden="true">i</span><span class="info-tip" role="tooltip">Entre los casos realmente negativos, proporción clasificada erróneamente como positiva.</span></button></span></th>
+                <th><span class="th-metric">FNR <button type="button" class="info-btn" aria-label="Definición de FNR"><span aria-hidden="true">i</span><span class="info-tip" role="tooltip">Entre los casos realmente positivos, proporción clasificada erróneamente como negativa.</span></button></span></th>
+              </tr>
             </thead>
             <tbody></tbody>
           </table>
         </div>
-        <div class="chart-container">
-          <canvas id="chart-race" aria-label="Gráfico comparativo de métricas por categoría racial" role="img"></canvas>
+        <div class="chart-pair">
+          <div class="chart-container">
+            <p class="chart-caption">Desempeño: Accuracy y Selection Rate</p>
+            <canvas id="chart-race-perf" aria-label="Gráfico de accuracy y selection rate por categoría racial" role="img"></canvas>
+          </div>
+          <div class="chart-container">
+            <p class="chart-caption">Errores: FPR y FNR</p>
+            <canvas id="chart-race-error" aria-label="Gráfico de FPR y FNR por categoría racial" role="img"></canvas>
+          </div>
         </div>
         <p class="audit-note">Las diferencias observadas son señales para investigar; por sí solas no demuestran causalidad ni discriminación.</p>
+        <p class="audit-note">Las métricas de grupos con tamaños pequeños deben interpretarse con especial cautela.</p>
       </div>
 
-      <!-- Comparación antes / después -->
       <div class="audit-block" id="audit-compare">
         <h3>Intervenir y volver a auditar</h3>
+        <p class="compare-lead">Accuracy no es suficiente para decidir si una intervención funcionó.</p>
         <div class="compare-cards" id="compare-cards">
           <div class="compare-card">
             <span class="compare-label">Modelo original</span>
             <span class="compare-value" id="cmp-orig">—</span>
+            <span class="compare-metric">Accuracy global</span>
           </div>
           <div class="compare-vs" aria-hidden="true">vs</div>
           <div class="compare-card">
-            <span class="compare-label">Sin atributos sensibles</span>
+            <span class="compare-label">Modelo sin atributos sensibles</span>
             <span class="compare-value" id="cmp-sin">—</span>
+            <span class="compare-metric">Accuracy global</span>
           </div>
         </div>
         <div class="chart-container chart-sm">
           <canvas id="chart-compare" aria-label="Comparación de accuracy entre modelos" role="img"></canvas>
         </div>
-        <p class="audit-note">Eliminar atributos sensibles no garantiza eliminar las diferencias entre grupos. Una intervención debe volver a auditarse.</p>
+        <p class="audit-gap" id="compare-gap">
+          En esta versión del laboratorio, la comparación posterior a la intervención está disponible para accuracy global. Para evaluar si la intervención redujo diferencias entre grupos es necesario volver a calcular FPR, FNR y Selection Rate por grupo.
+        </p>
+        <div class="lesson-box">
+          <h4>Lección HUMANO</h4>
+          <p>Eliminar atributos sensibles no garantiza eliminar los patrones asociados a ellos. Una intervención debe volver a auditarse.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ====== SEMÁFORO ====== -->
+  <section id="decision" class="section">
+    <div class="container">
+      <h2 class="section-title">Decisión HUMANO</h2>
+      <p class="section-intro">El framework no produce una certificación automática. La decisión es un juicio informado a partir de evidencia, no un sello técnico.</p>
+      <div class="decision-grid">
+        <div class="decision-card">
+          <span class="decision-name">Aprobar</span>
+        </div>
+        <div class="decision-card decision-active" aria-current="true">
+          <span class="decision-name">Aprobar con condiciones</span>
+        </div>
+        <div class="decision-card">
+          <span class="decision-name">No aprobar todavía</span>
+        </div>
+      </div>
+      <p class="decision-disclaimer">Esta clasificación es pedagógica y corresponde al caso demostrativo. No constituye una certificación ni una evaluación regulatoria.</p>
+      <ul class="decision-reasons">
+        <li>Existen diferencias importantes en tasas de selección.</li>
+        <li>Existen diferencias en FPR y FNR entre grupos.</li>
+        <li>Retirar atributos sensibles apenas modifica la accuracy.</li>
+        <li>Se requiere una nueva auditoría después de cualquier intervención.</li>
+      </ul>
+    </div>
+  </section>
+
   <section id="semaforo" class="section section-alt">
     <div class="container">
       <h2 class="section-title">Semáforo HUMANO</h2>
-      <p class="section-intro">Cobertura metodológica del laboratorio Adult Census. Este semáforo describe qué dimensiones fueron cubiertas en el ejercicio; no es una certificación.</p>
+      <p class="section-intro">Cobertura metodológica del laboratorio. Este semáforo describe la cobertura metodológica del ejercicio; no es una certificación.</p>
       <div class="semaforo-grid" id="semaforo-grid">
-        <div class="sem-item sem-green"><span class="sem-letter">H</span><span class="sem-status">Analizado</span></div>
-        <div class="sem-item sem-green"><span class="sem-letter">U</span><span class="sem-status">Evidencia disponible</span></div>
-        <div class="sem-item sem-yellow"><span class="sem-letter">M</span><span class="sem-status">Revisión requerida</span></div>
-        <div class="sem-item sem-green"><span class="sem-letter">A</span><span class="sem-status">Evidencia disponible</span></div>
-        <div class="sem-item sem-green"><span class="sem-letter">N</span><span class="sem-status">Gobernanza definida</span></div>
-        <div class="sem-item sem-green"><span class="sem-letter">O</span><span class="sem-status">Auditoría ejecutada</span></div>
+        <div class="sem-item sem-green"><span class="sem-letter" aria-label="H">H</span><span class="sem-status">Propósito analizado</span></div>
+        <div class="sem-item sem-green"><span class="sem-letter" aria-label="U">U</span><span class="sem-status">Impactos observados</span></div>
+        <div class="sem-item sem-yellow"><span class="sem-letter" aria-label="M">M</span><span class="sem-status">Revisión de datos requerida</span></div>
+        <div class="sem-item sem-green"><span class="sem-letter" aria-label="A">A</span><span class="sem-status">Transparencia evaluada</span></div>
+        <div class="sem-item sem-green"><span class="sem-letter" aria-label="N">N</span><span class="sem-status">Gobernanza definida</span></div>
+        <div class="sem-item sem-green"><span class="sem-letter" aria-label="O">O</span><span class="sem-status">Auditoría ejecutada</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ====== METADATA / UPDATE ====== -->
   <section class="section" id="meta-section">
     <div class="container ta-center">
       <p class="meta-update" id="meta-update"></p>
     </div>
   </section>
 
-  <!-- ====== FOOTER ====== -->
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-links">
@@ -244,7 +338,6 @@
     </div>
   </footer>
 
-  <!-- Error overlay -->
   <div class="error-banner" id="error-banner" role="alert" hidden>
     <p>No fue posible cargar los resultados de la auditoría. Verifique la última sincronización desde Kaggle.</p>
   </div>

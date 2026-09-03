@@ -4,12 +4,10 @@
 
   const DATA_URL = "data/resultados_humano.json";
 
-  /* ---------- helpers ---------- */
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const pct = (v) => (parseFloat(v) * 100).toFixed(2) + " %";
   const num = (v) => Number(v).toLocaleString("es-CO");
 
-  /* ---------- nav toggle ---------- */
   const toggle = $(".nav-toggle");
   const links = $(".nav-links");
   if (toggle && links) {
@@ -25,10 +23,25 @@
     });
   }
 
-  /* ---------- scroll reveal ---------- */
+  document.querySelectorAll(".info-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const open = btn.getAttribute("aria-expanded") === "true";
+      document.querySelectorAll(".info-btn").forEach((other) => {
+        other.setAttribute("aria-expanded", "false");
+      });
+      btn.setAttribute("aria-expanded", open ? "false" : "true");
+    });
+  });
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".info-btn").forEach((btn) => {
+      btn.setAttribute("aria-expanded", "false");
+    });
+  });
+
   function initReveal() {
     const items = document.querySelectorAll(
-      ".dim-card, .kpi-card, .sem-item, .meta-card, .compare-card"
+      ".dim-card, .kpi-card, .sem-item, .meta-card, .compare-card, .bridge-item, .decision-card"
     );
     if (!("IntersectionObserver" in window)) {
       items.forEach((el) => el.classList.add("visible"));
@@ -49,22 +62,19 @@
   }
   initReveal();
 
-  /* ---------- chart palette ---------- */
   const COLORS = [
     "#6c5ce7", "#00cec9", "#fdcb6e", "#55efc4", "#a29bfe",
     "#e17055", "#74b9ff", "#ff7675",
   ];
   const COLORS_A = COLORS.map((c) => c + "cc");
 
-  /* ---------- chart defaults ---------- */
   function chartDefaults() {
-    Chart.defaults.color = "#8b93a8";
+    Chart.defaults.color = "#a8b0c4";
     Chart.defaults.borderColor = "rgba(255,255,255,.06)";
     Chart.defaults.font.family =
       "'Segoe UI', system-ui, -apple-system, sans-serif";
   }
 
-  /* ---------- build grouped bar ---------- */
   function groupedBar(canvasId, labels, datasets) {
     const ctx = document.getElementById(canvasId);
     if (!ctx) return;
@@ -92,7 +102,6 @@
     });
   }
 
-  /* ---------- build horizontal compare ---------- */
   function compareBar(canvasId, labels, values) {
     const ctx = document.getElementById(canvasId);
     if (!ctx) return;
@@ -132,7 +141,10 @@
     });
   }
 
-  /* ---------- render audit table ---------- */
+  function sortByNDesc(rows) {
+    return rows.slice().sort((a, b) => Number(b.n) - Number(a.n));
+  }
+
   function renderTable(tableId, rows) {
     const tbody = $(`#${tableId} tbody`);
     if (!tbody) return;
@@ -150,29 +162,72 @@
     });
   }
 
-  /* ---------- render audit chart ---------- */
-  function renderAuditChart(canvasId, rows) {
-    const labels = rows.map((r) => r.grupo);
-    const metrics = ["accuracy", "selection_rate", "fpr", "fnr"];
-    const names = ["Accuracy", "Selection Rate", "FPR", "FNR"];
-    const datasets = metrics.map((m, i) => ({
+  function metricDatasets(rows, metrics, names, colorOffset) {
+    return metrics.map((m, i) => ({
       label: names[i],
       data: rows.map((r) => parseFloat(r[m])),
-      backgroundColor: COLORS_A[i],
-      borderColor: COLORS[i],
+      backgroundColor: COLORS_A[i + colorOffset],
+      borderColor: COLORS[i + colorOffset],
       borderWidth: 1,
       borderRadius: 4,
     }));
-    groupedBar(canvasId, labels, datasets);
   }
 
-  /* ---------- show error ---------- */
+  function renderAuditChart(canvasId, rows, metrics, names, colorOffset) {
+    const labels = rows.map((r) => r.grupo);
+    groupedBar(canvasId, labels, metricDatasets(rows, metrics, names, colorOffset || 0));
+  }
+
+  function maxBy(rows, key) {
+    return rows.reduce((best, row) =>
+      parseFloat(row[key]) > parseFloat(best[key]) ? row : best
+    );
+  }
+
+  function interpretSex(rows) {
+    const box = $("#observe-sex");
+    const body = $("#observe-sex-body");
+    if (!box || !body || !rows.length) return;
+
+    const acc = maxBy(rows, "accuracy");
+    const sel = maxBy(rows, "selection_rate");
+    const fpr = maxBy(rows, "fpr");
+    const fnr = maxBy(rows, "fnr");
+    const accFnr = parseFloat(acc.fnr);
+
+    const parts = [];
+    parts.push(
+      `La mayor accuracy corresponde a ${acc.grupo} (${pct(acc.accuracy)}).`
+    );
+    parts.push(
+      `La mayor selection rate corresponde a ${sel.grupo} (${pct(sel.selection_rate)}): una diferencia observada en la proporción de resultados positivos.`
+    );
+    parts.push(
+      `El mayor FPR corresponde a ${fpr.grupo} (${pct(fpr.fpr)}): una señal para investigar el patrón de error entre los casos realmente negativos.`
+    );
+    parts.push(
+      `El mayor FNR corresponde a ${fnr.grupo} (${pct(fnr.fnr)}): una señal para investigar el impacto diferencial del error entre los casos realmente positivos.`
+    );
+
+    if (acc.grupo === fnr.grupo) {
+      parts.push(
+        `La mayor accuracy corresponde a ${acc.grupo}, pero este grupo también presenta el FNR más alto (${pct(accFnr)}). Esto evidencia que una accuracy alta no implica necesariamente menor impacto de error.`
+      );
+    } else {
+      parts.push(
+        `${acc.grupo} concentra la mayor accuracy y, al mismo tiempo, ${fnr.grupo} concentra el mayor FNR. El patrón de error no se reduce a un único indicador de desempeño.`
+      );
+    }
+
+    body.innerHTML = parts.map((p) => `<p>${p}</p>`).join("");
+    box.hidden = false;
+  }
+
   function showError() {
     const banner = $("#error-banner");
     if (banner) banner.hidden = false;
   }
 
-  /* ---------- main load ---------- */
   fetch(DATA_URL)
     .then((res) => {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -181,32 +236,49 @@
     .then((data) => {
       chartDefaults();
 
-      /* caso meta */
       const ds = data.dataset || {};
       const setT = (id, v) => { const el = $(`#${id}`); if (el && v != null) el.textContent = v; };
       setT("meta-registros", num(ds.registros_modelo));
       setT("meta-variables", ds.variables_modelo);
       setT("meta-dataset", ds.nombre);
 
-      /* KPI */
       setT("kpi-acc-orig", pct(data.modelo_original?.accuracy));
       setT("kpi-acc-sin", pct(data.modelo_sin_sensibles?.accuracy));
       setT("kpi-registros", num(ds.registros_modelo));
       setT("kpi-variables", ds.variables_modelo);
 
-      /* auditoría sexo */
       if (data.auditoria_sex) {
-        renderTable("table-sex", data.auditoria_sex);
-        renderAuditChart("chart-sex", data.auditoria_sex);
+        const sexRows = sortByNDesc(data.auditoria_sex);
+        renderTable("table-sex", sexRows);
+        renderAuditChart(
+          "chart-sex",
+          sexRows,
+          ["accuracy", "selection_rate", "fpr", "fnr"],
+          ["Accuracy", "Selection Rate", "FPR", "FNR"],
+          0
+        );
+        interpretSex(sexRows);
       }
 
-      /* auditoría raza */
       if (data.auditoria_race) {
-        renderTable("table-race", data.auditoria_race);
-        renderAuditChart("chart-race", data.auditoria_race);
+        const raceRows = sortByNDesc(data.auditoria_race);
+        renderTable("table-race", raceRows);
+        renderAuditChart(
+          "chart-race-perf",
+          raceRows,
+          ["accuracy", "selection_rate"],
+          ["Accuracy", "Selection Rate"],
+          0
+        );
+        renderAuditChart(
+          "chart-race-error",
+          raceRows,
+          ["fpr", "fnr"],
+          ["FPR", "FNR"],
+          2
+        );
       }
 
-      /* comparación */
       const accOrig = data.modelo_original?.accuracy;
       const accSin = data.modelo_sin_sensibles?.accuracy;
       setT("cmp-orig", pct(accOrig));
@@ -219,7 +291,6 @@
         );
       }
 
-      /* metadata / fecha */
       if (data.metadata?.updated || data.updated) {
         setT("meta-update", "Última actualización desde Kaggle: " + (data.metadata?.updated || data.updated));
       }
