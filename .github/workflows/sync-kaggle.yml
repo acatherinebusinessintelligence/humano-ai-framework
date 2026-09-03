@@ -1,0 +1,109 @@
+name: Sync HUMANO results from Kaggle
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 8 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync-kaggle-results:
+    runs-on: ubuntu-latest
+    env:
+      KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+      KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+      KAGGLE_KERNEL: alejandramontana/humano-adult-census-kaggle
+      RESULTS_NAME: resultados_humano.json
+      REPO_RESULTS_PATH: data/resultados_humano.json
+      DOWNLOAD_DIR: ${{ runner.temp }}/kaggle-output
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify Kaggle credentials
+        run: |
+          set -euo pipefail
+          if [ -z "${KAGGLE_USERNAME}" ]; then
+            echo "Error: no existe el secreto KAGGLE_USERNAME."
+            echo "Crea KAGGLE_USERNAME en Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+          if [ -z "${KAGGLE_KEY}" ]; then
+            echo "Error: no existe el secreto KAGGLE_KEY."
+            echo "Crea KAGGLE_KEY en Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+          echo "Credenciales Kaggle presentes. No se imprimen valores."
+
+      - name: Install official Kaggle CLI
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install --upgrade kaggle
+          kaggle --version
+
+      - name: Download Kaggle notebook outputs
+        run: |
+          set -euo pipefail
+          mkdir -p "${DOWNLOAD_DIR}"
+          echo "Descargando outputs de ${KAGGLE_KERNEL}"
+          kaggle kernels output "${KAGGLE_KERNEL}" --path "${DOWNLOAD_DIR}" --force
+
+      - name: Verify resultados_humano.json exists
+        run: |
+          set -euo pipefail
+          DOWNLOADED_FILE="${DOWNLOAD_DIR}/${RESULTS_NAME}"
+          if [ ! -f "${DOWNLOADED_FILE}" ]; then
+            echo "Error: no apareció ${RESULTS_NAME} en los outputs del notebook ${KAGGLE_KERNEL}."
+            echo "Archivos descargados:"
+            find "${DOWNLOAD_DIR}" -type f -print
+            exit 1
+          fi
+          echo "Encontrado: ${DOWNLOADED_FILE}"
+
+      - name: Validate downloaded JSON
+        run: |
+          set -euo pipefail
+          python - "${DOWNLOAD_DIR}/${RESULTS_NAME}" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          path = Path(sys.argv[1])
+          try:
+              with path.open(encoding="utf-8") as handle:
+                  json.load(handle)
+          except json.JSONDecodeError as exc:
+              print(f"Error: el JSON descargado no es válido: {path}")
+              print(exc)
+              sys.exit(1)
+          print(f"JSON válido: {path}")
+          PY
+
+      - name: Copy results into the repository
+        run: |
+          set -euo pipefail
+          mkdir -p data
+          cp "${DOWNLOAD_DIR}/${RESULTS_NAME}" "${REPO_RESULTS_PATH}"
+          echo "Copiado a ${REPO_RESULTS_PATH}"
+
+      - name: Commit and push only if results changed
+        run: |
+          set -euo pipefail
+          git config user.name "HUMANO Bot"
+          git config user.email "actions@github.com"
+          git add "${REPO_RESULTS_PATH}"
+          if git diff --cached --quiet -- "${REPO_RESULTS_PATH}"; then
+            echo "Sin cambios en ${REPO_RESULTS_PATH}. No se crea commit."
+          else
+            git commit -m "Update HUMANO results from Kaggle"
+            git push
+            echo "Commit y push realizados porque ${REPO_RESULTS_PATH} cambió."
+          fi
