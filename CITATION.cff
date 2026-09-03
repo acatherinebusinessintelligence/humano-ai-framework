@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: >-
+  Si utiliza HUMANO en investigación, docencia o proyectos,
+  cite este repositorio. La referencia será actualizada con
+  el DOI oficial después de la publicación v1.0.0 en Zenodo.
+title: "HUMANO: Framework metodológico para diseñar y auditar sistemas de inteligencia artificial centrados en las personas"
+type: software
+authors:
+  - given-names: Alejandra Catherine
+    family-names: Montaña Acevedo
+version: "0.9.0"
+url: "https://github.com/acatherinebusinessintelligence/humano-ai-framework"
+repository-code: "https://github.com/acatherinebusinessintelligence/humano-ai-framework"
+keywords:
+  - artificial intelligence
+  - responsible AI
+  - AI governance
+  - algorithmic bias
+  - fairness
+  - explainability
+  - human-centered AI
+  - AI auditing

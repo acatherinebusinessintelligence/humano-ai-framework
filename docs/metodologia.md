@@ -592,7 +592,9 @@ El visor consume resultados computacionales generados por el laboratorio. Las m�
 
 ## Versionado
 
-**Versión actual:** Pre-v1.0
+**Versión documental actual:** v0.9.0
+
+**Estado:** Candidata a primera versión estable.
 
 **Convención futura:**
 
@@ -618,9 +620,9 @@ Este proyecto **no tiene DOI propio**. No debe citarse un DOI de HUMANO mientras
 
 Referencia provisional:
 
-Montaña Acevedo, Alejandra Catherine. *HUMANO: Framework metodológico para diseñar y auditar sistemas de inteligencia artificial centrados en las personas*. Versión de desarrollo.
+Montaña Acevedo, A. C. (2026). HUMANO: Framework metodológico para diseñar y auditar sistemas de inteligencia artificial centrados en las personas (v0.9.0).
 
-Esta referencia será sustituida por la citación oficial cuando exista DOI.
+Los metadatos de citación están en [`CITATION.cff`](../CITATION.cff). Esta referencia será sustituida por la citación oficial cuando exista DOI.
 
 El dataset del caso demostrativo sí tiene DOI propio:
 

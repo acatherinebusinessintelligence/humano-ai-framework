@@ -270,9 +270,13 @@ MSc. Inteligencia Artificial
 
 # Citación
 
-Montaña Acevedo, A. C. (2026). *HUMANO: Framework para diseñar y auditar sistemas de inteligencia artificial centrados en las personas*. GitHub. https://github.com/acatherinebusinessintelligence/humano-ai-framework
-
 Este proyecto no tiene DOI propio. No se debe citar un DOI de HUMANO mientras no exista uno asignado.
+
+Los metadatos de citación están en [`CITATION.cff`](CITATION.cff).
+
+### Citación provisional
+
+Montaña Acevedo, A. C. (2026). HUMANO: Framework metodológico para diseñar y auditar sistemas de inteligencia artificial centrados en las personas (v0.9.0).
 
 Para citar el dataset del caso demostrativo:
 
@@ -280,6 +284,20 @@ Becker, B., & Kohavi, R. (1996). *Adult* [Dataset]. UCI Machine Learning Reposit
 
 ---
 
-# Licencia
+## Licencias
 
-El archivo `LICENSE` aún no forma parte de este repositorio. Hasta que se publique, el material se destina a uso educativo y de consulta del framework HUMANO.
+HUMANO diferencia el código fuente de la metodología y la documentación.
+
+### Código
+
+El código fuente de HUMANO se distribuye bajo licencia MIT.
+
+[Licencia del código](LICENSE-CODE)
+
+### Framework y documentación
+
+La metodología HUMANO y su documentación se distribuyen bajo licencia Creative Commons Attribution 4.0 International (CC BY 4.0).
+
+[Licencia de documentación y metodología](LICENSE-DOCS.md)
+
+Las fuentes de datos utilizadas mantienen sus propias licencias y condiciones. El dataset Adult del caso demostrativo no se redistribuye bajo las licencias de HUMANO.
