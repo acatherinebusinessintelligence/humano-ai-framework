@@ -1,6 +1,74 @@
 {
-  "status": "pending",
-  "source": "Kaggle",
-  "notebook": "alejandramontana/humano-adult-census-kaggle",
-  "message": "Pendiente primera sincronización automática desde Kaggle."
+  "dataset": {
+    "nombre": "UCI Adult",
+    "doi": "10.24432/C5XW20",
+    "registros_modelo": 45222,
+    "variables_modelo": 13
+  },
+  "modelo_original": {
+    "accuracy": 0.8439596078720425
+  },
+  "modelo_sin_sensibles": {
+    "accuracy": 0.8434436500331687
+  },
+  "auditoria_sex": [
+    {
+      "grupo": "Female",
+      "n": "4390",
+      "accuracy": "0.9161731207289294",
+      "selection_rate": "0.07380410022779044",
+      "fpr": "0.02345360824742268",
+      "fnr": "0.5431372549019607"
+    },
+    {
+      "grupo": "Male",
+      "n": "9177",
+      "accuracy": "0.8094148414514547",
+      "selection_rate": "0.2583632995532309",
+      "fpr": "0.10023715415019763",
+      "fnr": "0.3909537166900421"
+    }
+  ],
+  "auditoria_race": [
+    {
+      "grupo": "Amer-Indian-Eskimo",
+      "n": "146",
+      "accuracy": "0.9178082191780822",
+      "selection_rate": "0.0684931506849315",
+      "fpr": "0.030303030303030304",
+      "fnr": "0.5714285714285714"
+    },
+    {
+      "grupo": "Asian-Pac-Islander",
+      "n": "389",
+      "accuracy": "0.8431876606683805",
+      "selection_rate": "0.2442159383033419",
+      "fpr": "0.08833922261484099",
+      "fnr": "0.33962264150943394"
+    },
+    {
+      "grupo": "Black",
+      "n": "1253",
+      "accuracy": "0.902633679169992",
+      "selection_rate": "0.07581803671189145",
+      "fpr": "0.02909090909090909",
+      "fnr": "0.5882352941176471"
+    },
+    {
+      "grupo": "Other",
+      "n": "99",
+      "accuracy": "0.8585858585858586",
+      "selection_rate": "0.0707070707070707",
+      "fpr": "0.03571428571428571",
+      "fnr": "0.7333333333333333"
+    },
+    {
+      "grupo": "White",
+      "n": "11680",
+      "accuracy": "0.8366438356164384",
+      "selection_rate": "0.213013698630137",
+      "fpr": "0.07680687892168254",
+      "fnr": "0.4056603773584906"
+    }
+  ]
 }
