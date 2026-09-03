@@ -23,6 +23,14 @@ HUMANO está compuesto por seis dimensiones:
 
 ---
 
+## Documentación metodológica
+
+La descripción formal de principios, dimensiones, evidencias, decisión y limitaciones está en:
+
+[Consultar metodología HUMANO](docs/metodologia.md)
+
+---
+
 # Objetivo
 
 El objetivo de HUMANO es ayudar a responder una pregunta que va más allá del desempeño técnico:
