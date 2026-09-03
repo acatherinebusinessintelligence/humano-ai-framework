@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HUMANO · Framework de IA centrado en las personas</title>
+  <meta name="description" content="Framework para diseñar y auditar sistemas de inteligencia artificial centrados en las personas.">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+  <!-- ====== NAV ====== -->
+  <nav class="top-nav" aria-label="Navegación principal">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-brand" aria-label="Inicio">HUMANO</a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#dimensiones">Framework</a></li>
+        <li><a href="#caso">Caso Adult Census</a></li>
+        <li><a href="#dashboard">Auditoría</a></li>
+        <li><a href="#semaforo">Semáforo</a></li>
+        <li><a href="https://www.kaggle.com/code/alejandramontana/humano-adult-census-kaggle" target="_blank" rel="noopener">Kaggle ↗</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ====== HERO ====== -->
+  <header id="hero" class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-content">
+      <p class="hero-tag">Framework de IA responsable</p>
+      <h1 class="hero-title">HUMANO</h1>
+      <p class="hero-subtitle">Framework para diseñar y auditar sistemas de inteligencia artificial centrados en las personas</p>
+      <p class="hero-claim">De un modelo técnicamente correcto a una IA responsable.</p>
+      <blockquote class="hero-quote">
+        "No preguntamos únicamente si la IA funciona.<br>
+        Preguntamos también para quién funciona, cómo decide y quién responde."
+      </blockquote>
+      <div class="hero-buttons">
+        <a href="#dimensiones" class="btn btn-primary">Explorar HUMANO</a>
+        <a href="https://www.kaggle.com/code/alejandramontana/humano-adult-census-kaggle" target="_blank" rel="noopener" class="btn btn-secondary" aria-label="Abrir laboratorio en Kaggle">Abrir laboratorio en Kaggle ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== DIMENSIONES ====== -->
+  <section id="dimensiones" class="section">
+    <div class="container">
+      <h2 class="section-title">Las seis dimensiones</h2>
+      <p class="section-intro">Cada letra de HUMANO representa una pregunta que debe responderse antes de aprobar un sistema de inteligencia artificial.</p>
+      <div class="dim-grid" id="dim-grid">
+
+        <article class="dim-card" data-letter="H" tabindex="0">
+          <span class="dim-letter" aria-hidden="true">H</span>
+          <h3>Humanizar el propósito</h3>
+          <p class="dim-question">¿Para qué se utilizará la IA y qué consecuencias puede producir?</p>
+          <p class="dim-body">Se analiza qué variable intenta predecir el modelo, para qué podría utilizarse y cuáles serían las consecuencias de una predicción incorrecta. En el laboratorio Adult Census, una predicción errónea de ingresos podría afectar decisiones de crédito, empleo o acceso a servicios.</p>
+        </article>
+
+        <article class="dim-card" data-letter="U" tabindex="0">
+          <span class="dim-letter" aria-hidden="true">U</span>
+          <h3>Ubicar personas e impactos</h3>
+          <p class="dim-question">¿Quién está representado y quién puede verse afectado?</p>
+          <p class="dim-body">Se explora la representación de grupos en los datos: distribución por sexo, categoría racial y diferencias en los resultados observados. Grupos minoritarios pueden estar sub-representados y recibir predicciones menos precisas.</p>
+        </article>
+
+        <article class="dim-card" data-letter="M" tabindex="0">
+          <span class="dim-letter" aria-hidden="true">M</span>
+          <h3>Minimizar datos y riesgos</h3>
+          <p class="dim-question">¿Qué datos son realmente necesarios y qué riesgos pueden introducir?</p>
+          <p class="dim-body">Se revisan atributos sensibles (sexo, raza), variables potencialmente innecesarias y posibles relaciones indirectas o proxies que puedan reintroducir sesgos incluso si se eliminan los atributos sensibles.</p>
+        </article>
+
+        <article class="dim-card" data-letter="A" tabindex="0">
+          <span class="dim-letter" aria-hidden="true">A</span>
+          <h3>Asegurar autonomía y transparencia</h3>
+          <p class="dim-question">¿Podemos explicar y cuestionar las decisiones del sistema?</p>
+          <p class="dim-body">Se construye una regresión logística y se analizan las variables con mayor influencia, los coeficientes del modelo y la capacidad de explicar las predicciones. Un modelo explicable permite que las personas afectadas cuestionen las decisiones.</p>
+        </article>
+
+        <article class="dim-card" data-letter="N" tabindex="0">
+          <span class="dim-letter" aria-hidden="true">N</span>
+          <h3>Nombrar responsables</h3>
+          <p class="dim-question">¿Quién responde por los datos, el modelo y sus decisiones?</p>
+          <p class="dim-body">Se propone una estructura de gobernanza que identifica responsables para: propósito del sistema, datos, desarrollo, validación, decisiones, reclamaciones y monitoreo.</p>
+        </article>
+
+        <article class="dim-card" data-letter="O" tabindex="0">
+          <span class="dim-letter" aria-hidden="true">O</span>
+          <h3>Observar, auditar y corregir</h3>
+          <p class="dim-question">¿El sistema funciona de manera consistente entre grupos y qué hacemos cuando encontramos diferencias?</p>
+          <p class="dim-body">Se calculan métricas globales y por grupos (Accuracy, Selection Rate, FPR, FNR) y se compara un modelo con atributos sensibles contra uno sin ellos, demostrando que eliminar variables no es suficiente.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CASO DEMOSTRATIVO ====== -->
+  <section id="caso" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Caso demostrativo · Adult Census</h2>
+      <div class="caso-grid">
+        <div class="caso-text">
+          <p>El laboratorio utiliza el dataset <strong>Adult Census Income</strong> del UCI Machine Learning Repository como caso educativo.</p>
+          <p><strong>Objetivo técnico:</strong> predecir si el ingreso anual de una persona supera USD&nbsp;50.000.</p>
+          <p class="caso-disclaimer">⚠ Este ejercicio no recomienda utilizar este modelo para tomar decisiones reales sobre personas.</p>
+          <p class="caso-source">Fuente: UCI Adult Dataset · DOI: <code>10.24432/C5XW20</code></p>
+        </div>
+        <div class="caso-meta" id="caso-meta">
+          <div class="meta-card">
+            <span class="meta-value" id="meta-registros">—</span>
+            <span class="meta-label">Registros</span>
+          </div>
+          <div class="meta-card">
+            <span class="meta-value" id="meta-variables">—</span>
+            <span class="meta-label">Variables</span>
+          </div>
+          <div class="meta-card">
+            <span class="meta-value" id="meta-dataset">—</span>
+            <span class="meta-label">Dataset</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== DASHBOARD ====== -->
+  <section id="dashboard" class="section">
+    <div class="container">
+      <h2 class="section-title">Auditoría HUMANO</h2>
+
+      <!-- KPI -->
+      <div class="kpi-grid" id="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-value" id="kpi-acc-orig">—</span>
+          <span class="kpi-label">Accuracy modelo original</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-value" id="kpi-acc-sin">—</span>
+          <span class="kpi-label">Accuracy sin atributos sensibles</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-value" id="kpi-registros">—</span>
+          <span class="kpi-label">Registros usados</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-value" id="kpi-variables">—</span>
+          <span class="kpi-label">Variables del modelo</span>
+        </div>
+      </div>
+
+      <!-- Auditoría por sexo -->
+      <div class="audit-block" id="audit-sex">
+        <h3>Auditoría por sexo</h3>
+        <div class="table-wrap">
+          <table id="table-sex" aria-label="Métricas de auditoría por sexo">
+            <thead>
+              <tr><th>Grupo</th><th>N</th><th>Accuracy</th><th>Selection Rate</th><th>FPR</th><th>FNR</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="chart-container">
+          <canvas id="chart-sex" aria-label="Gráfico comparativo de métricas por sexo" role="img"></canvas>
+        </div>
+      </div>
+
+      <!-- Auditoría por raza -->
+      <div class="audit-block" id="audit-race">
+        <h3>Auditoría por categoría racial</h3>
+        <div class="table-wrap">
+          <table id="table-race" aria-label="Métricas de auditoría por categoría racial">
+            <thead>
+              <tr><th>Grupo</th><th>N</th><th>Accuracy</th><th>Selection Rate</th><th>FPR</th><th>FNR</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="chart-container">
+          <canvas id="chart-race" aria-label="Gráfico comparativo de métricas por categoría racial" role="img"></canvas>
+        </div>
+        <p class="audit-note">Las diferencias observadas son señales para investigar; por sí solas no demuestran causalidad ni discriminación.</p>
+      </div>
+
+      <!-- Comparación antes / después -->
+      <div class="audit-block" id="audit-compare">
+        <h3>Intervenir y volver a auditar</h3>
+        <div class="compare-cards" id="compare-cards">
+          <div class="compare-card">
+            <span class="compare-label">Modelo original</span>
+            <span class="compare-value" id="cmp-orig">—</span>
+          </div>
+          <div class="compare-vs" aria-hidden="true">vs</div>
+          <div class="compare-card">
+            <span class="compare-label">Sin atributos sensibles</span>
+            <span class="compare-value" id="cmp-sin">—</span>
+          </div>
+        </div>
+        <div class="chart-container chart-sm">
+          <canvas id="chart-compare" aria-label="Comparación de accuracy entre modelos" role="img"></canvas>
+        </div>
+        <p class="audit-note">Eliminar atributos sensibles no garantiza eliminar las diferencias entre grupos. Una intervención debe volver a auditarse.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SEMÁFORO ====== -->
+  <section id="semaforo" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Semáforo HUMANO</h2>
+      <p class="section-intro">Cobertura metodológica del laboratorio Adult Census. Este semáforo describe qué dimensiones fueron cubiertas en el ejercicio; no es una certificación.</p>
+      <div class="semaforo-grid" id="semaforo-grid">
+        <div class="sem-item sem-green"><span class="sem-letter">H</span><span class="sem-status">Analizado</span></div>
+        <div class="sem-item sem-green"><span class="sem-letter">U</span><span class="sem-status">Evidencia disponible</span></div>
+        <div class="sem-item sem-yellow"><span class="sem-letter">M</span><span class="sem-status">Revisión requerida</span></div>
+        <div class="sem-item sem-green"><span class="sem-letter">A</span><span class="sem-status">Evidencia disponible</span></div>
+        <div class="sem-item sem-green"><span class="sem-letter">N</span><span class="sem-status">Gobernanza definida</span></div>
+        <div class="sem-item sem-green"><span class="sem-letter">O</span><span class="sem-status">Auditoría ejecutada</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== METADATA / UPDATE ====== -->
+  <section class="section" id="meta-section">
+    <div class="container ta-center">
+      <p class="meta-update" id="meta-update"></p>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-links">
+        <a href="https://www.kaggle.com/code/alejandramontana/humano-adult-census-kaggle" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Abrir laboratorio en Kaggle">Abrir laboratorio en Kaggle ↗</a>
+        <a href="https://github.com/acatherinebusinessintelligence/humano-ai-framework" target="_blank" rel="noopener" class="btn btn-secondary" aria-label="Ver repositorio en GitHub">Ver repositorio en GitHub ↗</a>
+      </div>
+      <p class="footer-credit">HUMANO · Alejandra Catherine Montaña Acevedo</p>
+      <p class="footer-disclaimer">Uso educativo y de auditoría metodológica.</p>
+    </div>
+  </footer>
+
+  <!-- Error overlay -->
+  <div class="error-banner" id="error-banner" role="alert" hidden>
+    <p>No fue posible cargar los resultados de la auditoría. Verifique la última sincronización desde Kaggle.</p>
+  </div>
+
+</body>
+</html>
