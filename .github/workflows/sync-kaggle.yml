@@ -17,7 +17,7 @@ jobs:
       KAGGLE_KERNEL: alejandramontana/humano-adult-census-kaggle
       RESULTS_NAME: resultados_humano.json
       REPO_RESULTS_PATH: data/resultados_humano.json
-      DOWNLOAD_DIR: ${{ runner.temp }}/kaggle-output
+      DOWNLOAD_DIR: /tmp/kaggle-output
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
