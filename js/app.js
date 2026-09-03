@@ -41,7 +41,7 @@
 
   function initReveal() {
     const items = document.querySelectorAll(
-      ".dim-card, .kpi-card, .sem-item, .meta-card, .compare-card, .bridge-item, .decision-card"
+      ".dim-card, .kpi-card, .sem-item, .meta-card, .compare-card, .bridge-item, .decision-card, .fact-card, .metric-def"
     );
     if (!("IntersectionObserver" in window)) {
       items.forEach((el) => el.classList.add("visible"));
@@ -184,42 +184,40 @@
     );
   }
 
-  function interpretSex(rows) {
-    const box = $("#observe-sex");
-    const body = $("#observe-sex-body");
+  function minBy(rows, key) {
+    return rows.reduce((best, row) =>
+      parseFloat(row[key]) < parseFloat(best[key]) ? row : best
+    );
+  }
+
+  function interpretGroups(boxId, bodyId, rows) {
+    const box = $(`#${boxId}`);
+    const body = $(`#${bodyId}`);
     if (!box || !body || !rows.length) return;
 
     const acc = maxBy(rows, "accuracy");
-    const sel = maxBy(rows, "selection_rate");
+    const selMax = maxBy(rows, "selection_rate");
+    const selMin = minBy(rows, "selection_rate");
     const fpr = maxBy(rows, "fpr");
     const fnr = maxBy(rows, "fnr");
-    const accFnr = parseFloat(acc.fnr);
 
-    const parts = [];
-    parts.push(
-      `La mayor accuracy corresponde a ${acc.grupo} (${pct(acc.accuracy)}).`
-    );
-    parts.push(
-      `La mayor selection rate corresponde a ${sel.grupo} (${pct(sel.selection_rate)}): una diferencia observada en la proporción de resultados positivos.`
-    );
-    parts.push(
-      `El mayor FPR corresponde a ${fpr.grupo} (${pct(fpr.fpr)}): una señal para investigar el patrón de error entre los casos realmente negativos.`
-    );
-    parts.push(
-      `El mayor FNR corresponde a ${fnr.grupo} (${pct(fnr.fnr)}): una señal para investigar el impacto diferencial del error entre los casos realmente positivos.`
-    );
+    const parts = [
+      `<p><strong>Desempeño.</strong> La mayor accuracy corresponde a ${acc.grupo} (${pct(acc.accuracy)}).</p>`,
+      `<p><strong>Selección.</strong> La mayor selection rate corresponde a ${selMax.grupo} (${pct(selMax.selection_rate)}); la menor, a ${selMin.grupo} (${pct(selMin.selection_rate)}).</p>`,
+      `<p><strong>Errores.</strong> El mayor FPR corresponde a ${fpr.grupo} (${pct(fpr.fpr)}) y el mayor FNR a ${fnr.grupo} (${pct(fnr.fnr)}).</p>`,
+    ];
 
     if (acc.grupo === fnr.grupo) {
       parts.push(
-        `La mayor accuracy corresponde a ${acc.grupo}, pero este grupo también presenta el FNR más alto (${pct(accFnr)}). Esto evidencia que una accuracy alta no implica necesariamente menor impacto de error.`
-      );
-    } else {
-      parts.push(
-        `${acc.grupo} concentra la mayor accuracy y, al mismo tiempo, ${fnr.grupo} concentra el mayor FNR. El patrón de error no se reduce a un único indicador de desempeño.`
+        `<p>La mayor accuracy corresponde a ${acc.grupo}, pero este grupo también presenta el FNR más alto. Esto evidencia que una accuracy alta no implica necesariamente menor impacto de error.</p>`
       );
     }
 
-    body.innerHTML = parts.map((p) => `<p>${p}</p>`).join("");
+    parts.push(
+      "<p>Estas diferencias deben interpretarse como señales para investigar y no como conclusiones causales.</p>"
+    );
+
+    body.innerHTML = parts.join("");
     box.hidden = false;
   }
 
@@ -242,6 +240,9 @@
       setT("meta-variables", ds.variables_modelo);
       setT("meta-dataset", ds.nombre);
 
+      setT("model-registros", num(ds.registros_modelo));
+      setT("model-variables", ds.variables_modelo);
+
       setT("kpi-acc-orig", pct(data.modelo_original?.accuracy));
       setT("kpi-acc-sin", pct(data.modelo_sin_sensibles?.accuracy));
       setT("kpi-registros", num(ds.registros_modelo));
@@ -257,7 +258,7 @@
           ["Accuracy", "Selection Rate", "FPR", "FNR"],
           0
         );
-        interpretSex(sexRows);
+        interpretGroups("observe-sex", "observe-sex-body", sexRows);
       }
 
       if (data.auditoria_race) {
@@ -277,6 +278,7 @@
           ["FPR", "FNR"],
           2
         );
+        interpretGroups("observe-race", "observe-race-body", raceRows);
       }
 
       const accOrig = data.modelo_original?.accuracy;

@@ -18,11 +18,11 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
+        <li><a href="#leer-caso">Cómo leer</a></li>
         <li><a href="#dimensiones">Framework</a></li>
-        <li><a href="#caso">Caso Adult Census</a></li>
-        <li><a href="#dashboard">Auditoría</a></li>
+        <li><a href="#aplicacion">Aplicación</a></li>
+        <li><a href="#dashboard">Evidencia</a></li>
         <li><a href="#decision">Decisión</a></li>
-        <li><a href="#semaforo">Semáforo</a></li>
         <li><a href="https://www.kaggle.com/code/alejandramontana/humano-adult-census-kaggle" target="_blank" rel="noopener">Kaggle ↗</a></li>
       </ul>
     </div>
@@ -40,13 +40,32 @@
         Preguntamos también para quién funciona, cómo decide y quién responde."
       </blockquote>
       <div class="hero-buttons">
-        <a href="#dimensiones" class="btn btn-primary">Explorar HUMANO</a>
+        <a href="#leer-caso" class="btn btn-primary">Explorar HUMANO</a>
         <a href="https://www.kaggle.com/code/alejandramontana/humano-adult-census-kaggle" target="_blank" rel="noopener" class="btn btn-secondary" aria-label="Abrir laboratorio en Kaggle">Abrir laboratorio en Kaggle ↗</a>
       </div>
     </div>
   </header>
 
-  <section id="dimensiones" class="section">
+  <section id="leer-caso" class="section">
+    <div class="container">
+      <h2 class="section-title">Cómo leer este caso</h2>
+      <div class="story-path" aria-label="Recorrido del visor">
+        <span>Problema</span><span aria-hidden="true">↓</span>
+        <span>HUMANO</span><span aria-hidden="true">↓</span>
+        <span>Aplicación paso a paso</span><span aria-hidden="true">↓</span>
+        <span>Evidencia</span><span aria-hidden="true">↓</span>
+        <span>Interpretación</span><span aria-hidden="true">↓</span>
+        <span>Intervención</span><span aria-hidden="true">↓</span>
+        <span>Decisión HUMANO</span>
+      </div>
+      <div class="callout-grid">
+        <p class="callout">Este visor no busca demostrar que un modelo es justo o injusto a partir de una sola métrica. Su propósito es mostrar cómo HUMANO estructura una evaluación: comenzar por el propósito, identificar a las personas afectadas, revisar los datos, entender el modelo, asignar responsabilidades y finalmente auditar sus resultados.</p>
+        <p class="callout callout-warn">El caso Adult Census se utiliza únicamente como demostración educativa. Las diferencias observadas son señales para investigar y no constituyen por sí solas evidencia de causalidad o discriminación.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dimensiones" class="section section-alt">
     <div class="container">
       <h2 class="section-title">Las seis dimensiones</h2>
       <p class="section-intro">Cada letra de HUMANO representa una pregunta que debe responderse antes de aprobar un sistema de inteligencia artificial.</p>
@@ -104,6 +123,97 @@
     </div>
   </section>
 
+  <section id="aplicacion" class="section">
+    <div class="container">
+      <h2 class="section-title">Aplicación HUMANO al caso Adult Census</h2>
+      <p class="section-intro">Cada letra se aplica con la misma estructura: pregunta, análisis, evidencia, lo que se puede concluir y lo que no.</p>
+      <div class="apply-list">
+
+        <details class="apply-card" data-letter="H" open>
+          <summary><span class="apply-letter" aria-hidden="true">H</span> Humanizar el propósito</summary>
+          <div class="apply-body">
+            <p class="apply-q"><strong>Pregunta HUMANO.</strong> ¿Para qué se utilizará la IA y qué consecuencias puede producir?</p>
+            <p><strong>Qué analizamos.</strong> El propósito de un sistema que predice una categoría de ingreso.</p>
+            <p><strong>Por qué importa.</strong> Una predicción sobre ingresos puede parecer puramente técnica, pero en un contexto real podría utilizarse para decisiones relacionadas con acceso, elegibilidad, priorización o segmentación.</p>
+            <p><strong>Qué hicimos en este laboratorio.</strong> Definimos el target y analizamos el propósito del caso antes de evaluar el modelo.</p>
+            <p><strong>Qué evidencia observamos.</strong> Variable objetivo (ingreso anual mayor a USD 50.000) y contexto educativo del caso. La distribución exacta del target no se publica en el JSON del visor.</p>
+            <p class="can"><strong>Qué podemos concluir.</strong> El desempeño técnico debe interpretarse en función del uso previsto.</p>
+            <p class="cannot"><strong>Qué NO podemos concluir.</strong> Que este modelo sea apropiado para tomar decisiones reales sobre personas.</p>
+            <a class="cta-kaggle" href="https://www.kaggle.com/code/alejandramontana/humano-adult-census-kaggle" target="_blank" rel="noopener">Ver análisis técnico completo en Kaggle ↗</a>
+          </div>
+        </details>
+
+        <details class="apply-card" data-letter="U">
+          <summary><span class="apply-letter" aria-hidden="true">U</span> Ubicar personas e impactos</summary>
+          <div class="apply-body">
+            <p class="apply-q"><strong>Pregunta HUMANO.</strong> ¿Quién está representado y quién puede verse afectado?</p>
+            <p><strong>Qué analizamos.</strong> Representación y resultados por grupos.</p>
+            <p><strong>Por qué importa.</strong> Un modelo puede presentar buen desempeño global y errores distintos entre grupos.</p>
+            <p><strong>Qué hicimos en este laboratorio.</strong> Auditamos métricas por sexo y categoría racial.</p>
+            <p><strong>Qué evidencia observamos.</strong> Número de registros por grupo, accuracy, selection rate, FPR y FNR, mostrados más abajo en la auditoría.</p>
+            <p class="can"><strong>Qué podemos concluir.</strong> Existen diferencias observables entre grupos que requieren análisis.</p>
+            <p class="cannot"><strong>Qué NO podemos concluir.</strong> Que esas diferencias demuestren causalidad o discriminación.</p>
+          </div>
+        </details>
+
+        <details class="apply-card" data-letter="M">
+          <summary><span class="apply-letter" aria-hidden="true">M</span> Minimizar datos y riesgos</summary>
+          <div class="apply-body">
+            <p class="apply-q"><strong>Pregunta HUMANO.</strong> ¿Qué datos son realmente necesarios y qué riesgos pueden introducir?</p>
+            <p><strong>Qué analizamos.</strong> Atributos sensibles y posibles proxies.</p>
+            <p><strong>Por qué importa.</strong> Eliminar una variable sensible no elimina necesariamente la información asociada a ella.</p>
+            <p><strong>Qué hicimos en este laboratorio.</strong> Identificamos variables sensibles como <code>sex</code> y <code>race</code> y comparamos un modelo original con otro sin esos atributos.</p>
+            <p><strong>Qué evidencia observamos.</strong> Presencia de atributos sensibles y comparación de accuracy global entre ambos modelos. El inventario completo de variables y el análisis de proxies se documentan en el notebook.</p>
+            <p class="can"><strong>Qué podemos concluir.</strong> La retirada de atributos sensibles puede modificar el modelo, pero no garantiza eliminar patrones asociados.</p>
+            <p class="cannot"><strong>Qué NO podemos concluir.</strong> Que eliminar <code>sex</code> y <code>race</code> produce automáticamente fairness.</p>
+            <a class="cta-kaggle" href="https://www.kaggle.com/code/alejandramontana/humano-adult-census-kaggle" target="_blank" rel="noopener">Ver análisis técnico completo en Kaggle ↗</a>
+          </div>
+        </details>
+
+        <details class="apply-card" data-letter="A">
+          <summary><span class="apply-letter" aria-hidden="true">A</span> Asegurar autonomía y transparencia</summary>
+          <div class="apply-body">
+            <p class="apply-q"><strong>Pregunta HUMANO.</strong> ¿Podemos explicar y cuestionar las decisiones del sistema?</p>
+            <p><strong>Qué analizamos.</strong> Interpretabilidad del modelo.</p>
+            <p><strong>Por qué importa.</strong> Una persona afectada por una decisión debería poder comprender al menos los factores principales que intervienen.</p>
+            <p><strong>Qué hicimos en este laboratorio.</strong> Utilizamos regresión logística y observamos sus coeficientes en el notebook.</p>
+            <p><strong>Qué evidencia observamos.</strong> Los coeficientes no están incluidos en <code>resultados_humano.json</code>. El visor no los inventa: el cálculo vive en Kaggle.</p>
+            <p class="can"><strong>Qué podemos concluir.</strong> El modelo permite una inspección mayor que modelos más opacos.</p>
+            <p class="cannot"><strong>Qué NO podemos concluir.</strong> Que un coeficiente demuestre causalidad.</p>
+            <a class="cta-kaggle" href="https://www.kaggle.com/code/alejandramontana/humano-adult-census-kaggle" target="_blank" rel="noopener">Ver análisis técnico completo en Kaggle ↗</a>
+          </div>
+        </details>
+
+        <details class="apply-card" data-letter="N">
+          <summary><span class="apply-letter" aria-hidden="true">N</span> Nombrar responsables</summary>
+          <div class="apply-body">
+            <p class="apply-q"><strong>Pregunta HUMANO.</strong> ¿Quién responde por los datos, el modelo y sus decisiones?</p>
+            <p><strong>Qué analizamos.</strong> Gobernanza y responsabilidades.</p>
+            <p><strong>Por qué importa.</strong> Las decisiones de un sistema de IA no pueden atribuirse al “algoritmo”.</p>
+            <p><strong>Qué hicimos en este laboratorio.</strong> El laboratorio documenta esta dimensión metodológicamente, aunque no exista una organización real detrás del caso Adult Census.</p>
+            <p><strong>Qué evidencia observamos.</strong> La necesidad de Data Owner, Model Owner, responsable de validación, de aprobación y de monitoreo.</p>
+            <p class="can"><strong>Qué podemos concluir.</strong> Todo sistema debería asignar responsabilidades antes de su uso.</p>
+            <p class="cannot"><strong>Qué NO podemos concluir.</strong> Que exista una gobernanza real para este dataset educativo.</p>
+          </div>
+        </details>
+
+        <details class="apply-card" data-letter="O">
+          <summary><span class="apply-letter" aria-hidden="true">O</span> Observar, auditar y corregir</summary>
+          <div class="apply-body">
+            <p class="apply-q"><strong>Pregunta HUMANO.</strong> ¿El sistema funciona de manera consistente entre grupos y qué hacemos cuando encontramos diferencias?</p>
+            <p><strong>Qué analizamos.</strong> Desempeño global y errores por grupo.</p>
+            <p><strong>Por qué importa.</strong> Las métricas globales pueden ocultar impactos diferentes.</p>
+            <p><strong>Qué hicimos en este laboratorio.</strong> Calculamos accuracy, selection rate, FPR y FNR por grupos de sexo y categoría racial.</p>
+            <p><strong>Qué evidencia observamos.</strong> Las tablas y gráficos de la sección de auditoría.</p>
+            <p class="can"><strong>Qué podemos concluir.</strong> Las métricas muestran patrones que justifican investigación adicional.</p>
+            <p class="cannot"><strong>Qué NO podemos concluir.</strong> Que exista discriminación causal solamente por diferencias de métricas.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
   <section id="caso" class="section section-alt">
     <div class="container">
       <h2 class="section-title">Caso demostrativo · Adult Census</h2>
@@ -113,6 +223,7 @@
           <p><strong>Objetivo técnico:</strong> predecir si el ingreso anual de una persona supera USD&nbsp;50.000.</p>
           <p class="caso-disclaimer">Este ejercicio no recomienda utilizar este modelo para tomar decisiones reales sobre personas.</p>
           <p class="caso-source">Fuente: UCI Adult Dataset · DOI: <code>10.24432/C5XW20</code></p>
+          <a class="cta-kaggle" href="https://www.kaggle.com/code/alejandramontana/humano-adult-census-kaggle" target="_blank" rel="noopener">Ver análisis técnico completo en Kaggle ↗</a>
         </div>
         <div class="caso-meta" id="caso-meta">
           <div class="meta-card">
@@ -171,9 +282,36 @@
     </div>
   </section>
 
-  <section id="dashboard" class="section section-alt">
+  <section id="modelo" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Qué modelo estamos analizando</h2>
+      <div class="fact-grid">
+        <div class="fact-card"><span class="fact-label">Dataset</span><span class="fact-value">UCI Adult Census Income</span></div>
+        <div class="fact-card"><span class="fact-label">Objetivo</span><span class="fact-value">Predecir si el ingreso anual supera USD 50K</span></div>
+        <div class="fact-card"><span class="fact-label">Tipo de problema</span><span class="fact-value">Clasificación binaria</span></div>
+        <div class="fact-card"><span class="fact-label">Modelo</span><span class="fact-value">Regresión logística</span></div>
+        <div class="fact-card"><span class="fact-label">Registros usados en el modelado</span><span class="fact-value" id="model-registros">—</span></div>
+        <div class="fact-card"><span class="fact-label">Variables incluidas en el modelo</span><span class="fact-value" id="model-variables">—</span></div>
+      </div>
+      <p class="section-intro" style="margin-top:1.75rem;margin-bottom:0;">Se elige un modelo interpretable para observar coeficientes y diferencias de desempeño entre grupos. Fuente: UCI Machine Learning Repository. DOI: <code>10.24432/C5XW20</code>.</p>
+      <p class="audit-note" style="max-width:720px;margin:1.25rem auto 0;">El JSON del visor no incluye split de entrenamiento/prueba, hiperparámetros ni coeficientes. Esos detalles no se inventan aquí.</p>
+    </div>
+  </section>
+
+  <section id="dashboard" class="section">
     <div class="container">
       <h2 class="section-title">Auditoría HUMANO</h2>
+
+      <div class="why-block">
+        <h3>¿Por qué no basta con accuracy?</h3>
+        <p>Accuracy resume cuántas predicciones fueron correctas en total, pero puede ocultar cómo se distribuyen los errores. Dos grupos pueden tener una accuracy similar y, al mismo tiempo, experimentar tasas muy diferentes de falsos positivos o falsos negativos.</p>
+        <div class="metric-def-grid">
+          <div class="metric-def"><h4>Accuracy</h4><p>Porcentaje total de predicciones correctas.</p></div>
+          <div class="metric-def"><h4>Selection Rate</h4><p>Proporción de personas clasificadas con resultado positivo por el modelo.</p></div>
+          <div class="metric-def"><h4>FPR</h4><p>Entre los casos realmente negativos, proporción clasificada erróneamente como positiva.</p></div>
+          <div class="metric-def"><h4>FNR</h4><p>Entre los casos realmente positivos, proporción clasificada erróneamente como negativa.</p></div>
+        </div>
+      </div>
 
       <div class="kpi-grid" id="kpi-grid">
         <div class="kpi-card">
@@ -196,6 +334,7 @@
 
       <div class="audit-block" id="audit-sex">
         <h3>Auditoría por sexo</h3>
+        <p class="audit-lead">En esta sección comparamos no solo cuántas predicciones fueron correctas, sino también quién recibe resultados positivos y dónde se concentran los errores.</p>
         <div class="table-wrap">
           <table id="table-sex" aria-label="Métricas de auditoría por sexo">
             <thead>
@@ -222,6 +361,7 @@
 
       <div class="audit-block" id="audit-race">
         <h3>Auditoría por categoría racial</h3>
+        <p class="audit-lead">Al comparar categorías con tamaños de muestra diferentes, las métricas deben interpretarse junto con el número de observaciones de cada grupo.</p>
         <div class="table-wrap">
           <table id="table-race" aria-label="Métricas de auditoría por categoría racial">
             <thead>
@@ -247,13 +387,18 @@
             <canvas id="chart-race-error" aria-label="Gráfico de FPR y FNR por categoría racial" role="img"></canvas>
           </div>
         </div>
+        <div class="observe-box" id="observe-race" hidden>
+          <h4>¿Qué estamos observando?</h4>
+          <div id="observe-race-body"></div>
+        </div>
         <p class="audit-note">Las diferencias observadas son señales para investigar; por sí solas no demuestran causalidad ni discriminación.</p>
         <p class="audit-note">Las métricas de grupos con tamaños pequeños deben interpretarse con especial cautela.</p>
       </div>
 
       <div class="audit-block" id="audit-compare">
         <h3>Intervenir y volver a auditar</h3>
-        <p class="compare-lead">Accuracy no es suficiente para decidir si una intervención funcionó.</p>
+        <p class="compare-lead">Una intervención responsable no termina cuando se modifica el modelo. Después de cualquier cambio es necesario volver a calcular las métricas relevantes.</p>
+        <p class="compare-lead">Modelo original vs modelo sin <code>sex</code> y <code>race</code>.</p>
         <div class="compare-cards" id="compare-cards">
           <div class="compare-card">
             <span class="compare-label">Modelo original</span>
@@ -262,7 +407,7 @@
           </div>
           <div class="compare-vs" aria-hidden="true">vs</div>
           <div class="compare-card">
-            <span class="compare-label">Modelo sin atributos sensibles</span>
+            <span class="compare-label">Modelo sin sex y race</span>
             <span class="compare-value" id="cmp-sin">—</span>
             <span class="compare-metric">Accuracy global</span>
           </div>
@@ -271,13 +416,32 @@
           <canvas id="chart-compare" aria-label="Comparación de accuracy entre modelos" role="img"></canvas>
         </div>
         <p class="audit-gap" id="compare-gap">
-          En esta versión del laboratorio, la comparación posterior a la intervención está disponible para accuracy global. Para evaluar si la intervención redujo diferencias entre grupos es necesario volver a calcular FPR, FNR y Selection Rate por grupo.
+          Una variación mínima en accuracy no permite concluir que la intervención mejoró el comportamiento del sistema entre grupos.
+        </p>
+        <p class="audit-gap">
+          En esta versión del laboratorio, la comparación posterior a la intervención está disponible para accuracy global. Una auditoría completa requeriría recalcular Selection Rate, FPR y FNR por grupo.
         </p>
         <div class="lesson-box">
           <h4>Lección HUMANO</h4>
           <p>Eliminar atributos sensibles no garantiza eliminar los patrones asociados a ellos. Una intervención debe volver a auditarse.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="del-dato" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Del dato a la decisión</h2>
+      <div class="story-path" aria-label="Del dato a la decisión">
+        <span>Propósito</span><span aria-hidden="true">↓</span>
+        <span>Personas</span><span aria-hidden="true">↓</span>
+        <span>Datos</span><span aria-hidden="true">↓</span>
+        <span>Transparencia</span><span aria-hidden="true">↓</span>
+        <span>Responsabilidad</span><span aria-hidden="true">↓</span>
+        <span>Auditoría</span><span aria-hidden="true">↓</span>
+        <span>Decisión</span>
+      </div>
+      <p class="section-intro" style="margin-bottom:0;">HUMANO no produce una decisión automática. Estructura la evidencia necesaria para que una persona u organización pueda tomar una decisión informada.</p>
     </div>
   </section>
 
@@ -296,13 +460,27 @@
           <span class="decision-name">No aprobar todavía</span>
         </div>
       </div>
-      <p class="decision-disclaimer">Esta clasificación es pedagógica y corresponde al caso demostrativo. No constituye una certificación ni una evaluación regulatoria.</p>
+      <p class="decision-disclaimer">Esta salida es pedagógica y no constituye una certificación, auditoría regulatoria ni conclusión jurídica.</p>
       <ul class="decision-reasons">
-        <li>Existen diferencias importantes en tasas de selección.</li>
-        <li>Existen diferencias en FPR y FNR entre grupos.</li>
-        <li>Retirar atributos sensibles apenas modifica la accuracy.</li>
+        <li>Existen diferencias en tasas de selección.</li>
+        <li>Existen diferencias en FPR y FNR.</li>
+        <li>Retirar atributos sensibles no demuestra por sí solo una mejora.</li>
         <li>Se requiere una nueva auditoría después de cualquier intervención.</li>
       </ul>
+    </div>
+  </section>
+
+  <section id="aprendimos" class="section">
+    <div class="container">
+      <h2 class="section-title">Qué aprendimos con HUMANO</h2>
+      <ol class="learn-list">
+        <li>Accuracy no es suficiente.</li>
+        <li>Los errores deben analizarse por grupo.</li>
+        <li>Eliminar atributos sensibles no elimina necesariamente sus efectos.</li>
+        <li>La interpretabilidad ayuda, pero no demuestra causalidad.</li>
+        <li>Una intervención debe volver a auditarse.</li>
+      </ol>
+      <blockquote class="hero-quote" style="margin:2rem auto 0;">La pregunta no es únicamente si la IA funciona. También debemos preguntar para quién funciona, cómo decide, qué riesgos introduce y quién responde.</blockquote>
     </div>
   </section>
 
