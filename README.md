@@ -1,5 +1,7 @@
 # HUMANO
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22285253.svg)](https://doi.org/10.5281/zenodo.22285253)
+
 ## Framework para diseñar y auditar sistemas de inteligencia artificial centrados en las personas
 
 HUMANO es un framework metodológico orientado a evaluar sistemas de inteligencia artificial desde una perspectiva técnica, ética y de gobernanza.
@@ -223,8 +225,8 @@ HUMANO exige revisar propósito, personas afectadas, datos, transparencia, respo
 - [x] Documentación metodológica ampliada
 - [x] CITATION.cff
 - [x] Licencias
-- [ ] Publicación en Zenodo
-- [ ] DOI
+- [x] Publicación en Zenodo
+- [x] DOI
 
 Más detalle en [CHANGELOG.md](CHANGELOG.md) y [docs/RELEASE_NOTES_v1.0.0.md](docs/RELEASE_NOTES_v1.0.0.md).
 
@@ -274,15 +276,9 @@ MSc. Inteligencia Artificial
 
 # Citación
 
-Este proyecto no tiene DOI propio. No se debe citar un DOI de HUMANO mientras no exista uno asignado.
-
 Los metadatos de citación están en [`CITATION.cff`](CITATION.cff).
 
-### Citación provisional
-
-Montaña Acevedo, A. C. (2026). HUMANO: Framework metodológico para diseñar y auditar sistemas de inteligencia artificial centrados en las personas (v1.0.0).
-
-La referencia será actualizada con el DOI oficial después de la publicación en Zenodo.
+Montaña Acevedo, A. C. (2026). HUMANO: Framework metodológico para diseñar y auditar sistemas de inteligencia artificial centrados en las personas (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.22285253
 
 Para citar el dataset del caso demostrativo:
 

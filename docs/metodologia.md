@@ -596,6 +596,8 @@ El visor consume resultados computacionales generados por el laboratorio. Las m�
 
 **Estado:** Primera versión estable.
 
+**DOI:** `10.5281/zenodo.22285253`
+
 **Convención futura:**
 
 - `v1.0.0`
@@ -608,23 +610,21 @@ Semantic versioning previsto:
 - **MINOR:** nuevas dimensiones, evidencias o funcionalidades compatibles.
 - **PATCH:** correcciones menores.
 
-La versión 1.0.0 se reserva para una publicación formal, con citación académica y, cuando corresponda, depósito en Zenodo.
+La versión v1.0.0 es la primera versión estable y está archivada en Zenodo.
 
 ---
 
 ## Citación
 
-La versión 1.0.0 será preparada para publicación en Zenodo.
+**Versión estable:** v1.0.0
 
-Este proyecto **no tiene DOI propio**. No debe citarse un DOI de HUMANO mientras no exista uno asignado.
+**DOI:** `10.5281/zenodo.22285253`
 
-Referencia provisional:
+Montaña Acevedo, A. C. (2026). HUMANO: Framework metodológico para diseñar y auditar sistemas de inteligencia artificial centrados en las personas (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.22285253
 
-Montaña Acevedo, A. C. (2026). HUMANO: Framework metodológico para diseñar y auditar sistemas de inteligencia artificial centrados en las personas (v1.0.0).
+Los metadatos de citación están en [`CITATION.cff`](../CITATION.cff).
 
-Los metadatos de citación están en [`CITATION.cff`](../CITATION.cff). La referencia será actualizada con el DOI oficial después de la publicación en Zenodo.
-
-El dataset del caso demostrativo sí tiene DOI propio:
+El dataset del caso demostrativo tiene DOI propio:
 
 Becker, B., & Kohavi, R. (1996). *Adult* [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5XW20
 

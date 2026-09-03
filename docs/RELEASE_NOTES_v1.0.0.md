@@ -48,7 +48,9 @@ Los resultados se generan en Kaggle, se sincronizan hacia GitHub y se publican e
 
 ### Estado de citación
 
-La referencia actual es provisional, asociada a v1.0.0. El DOI de HUMANO está pendiente de asignación en Zenodo.
+HUMANO v1.0.0 está archivado en Zenodo.
+
+DOI: `10.5281/zenodo.22285253`
 
 ---
 
@@ -74,4 +76,6 @@ DOI: `10.24432/C5XW20`
 
 ## DOI
 
-Pendiente de asignación mediante Zenodo.
+DOI: `10.5281/zenodo.22285253`
+
+https://doi.org/10.5281/zenodo.22285253

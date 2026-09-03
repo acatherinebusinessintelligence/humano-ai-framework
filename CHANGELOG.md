@@ -20,9 +20,9 @@ Registro de cambios de HUMANO. El formato se inspira en Keep a Changelog.
 - Documentación metodológica.
 - CITATION.cff.
 - Licenciamiento diferenciado para código y documentación.
+- Publicación archivada en Zenodo.
+- DOI oficial: 10.5281/zenodo.22285253.
 
 ### Notes
 
 Esta es la primera versión estable de HUMANO.
-
-El DOI oficial se añadirá después de la publicación en Zenodo.

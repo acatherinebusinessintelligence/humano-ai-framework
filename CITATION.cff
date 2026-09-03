@@ -1,14 +1,16 @@
 cff-version: 1.2.0
 message: >-
   Si utiliza HUMANO en investigación, docencia o proyectos,
-  cite este repositorio. La referencia será actualizada con
-  el DOI oficial después de la publicación v1.0.0 en Zenodo.
+  cite HUMANO v1.0.0 usando el DOI oficial
+  10.5281/zenodo.22285253.
 title: "HUMANO: Framework metodológico para diseñar y auditar sistemas de inteligencia artificial centrados en las personas"
 type: software
 authors:
   - given-names: Alejandra Catherine
     family-names: Montaña Acevedo
 version: "1.0.0"
+doi: 10.5281/zenodo.22285253
+date-released: "2026-09-03"
 url: "https://github.com/acatherinebusinessintelligence/humano-ai-framework"
 repository-code: "https://github.com/acatherinebusinessintelligence/humano-ai-framework"
 keywords:
