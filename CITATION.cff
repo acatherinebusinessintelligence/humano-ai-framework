@@ -8,7 +8,7 @@ type: software
 authors:
   - given-names: Alejandra Catherine
     family-names: Montaña Acevedo
-version: "0.9.0"
+version: "1.0.0"
 url: "https://github.com/acatherinebusinessintelligence/humano-ai-framework"
 repository-code: "https://github.com/acatherinebusinessintelligence/humano-ai-framework"
 keywords:

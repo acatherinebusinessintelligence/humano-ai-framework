@@ -29,6 +29,8 @@ La descripción formal de principios, dimensiones, evidencias, decisión y limit
 
 [Consultar metodología HUMANO](docs/metodologia.md)
 
+[Changelog](CHANGELOG.md) · [Notas de la versión v1.0.0](docs/RELEASE_NOTES_v1.0.0.md)
+
 ---
 
 # Objetivo
@@ -208,21 +210,23 @@ HUMANO exige revisar propósito, personas afectadas, datos, transparencia, respo
 
 # Estado del proyecto
 
-Estado actual: estructura inicial del repositorio.
+**Versión actual:** v1.0.0
 
-Incluido:
+- [x] Framework HUMANO
+- [x] Caso Adult Census
+- [x] Notebook en Kaggle
+- [x] Modelo de clasificación
+- [x] Auditoría por grupos
+- [x] Exportación de resultados JSON
+- [x] Sincronización automática Kaggle → GitHub
+- [x] Visor interactivo GitHub Pages
+- [x] Documentación metodológica ampliada
+- [x] CITATION.cff
+- [x] Licencias
+- [ ] Publicación en Zenodo
+- [ ] DOI
 
-- documentación del framework en `README.md`;
-- marcador de resultados en `data/resultados_humano.json`;
-- carpetas reservadas para `css/`, `js/`, `notebooks/` y `.github/workflows/`.
-
-Pendiente, de forma deliberada:
-
-- visor HTML (`index.html`, `styles.css`, `app.js`);
-- workflow definitivo de GitHub Actions;
-- configuración de GitHub Pages;
-- archivo `LICENSE`;
-- archivo `CITATION.cff`.
+Más detalle en [CHANGELOG.md](CHANGELOG.md) y [docs/RELEASE_NOTES_v1.0.0.md](docs/RELEASE_NOTES_v1.0.0.md).
 
 ---
 
@@ -276,7 +280,9 @@ Los metadatos de citación están en [`CITATION.cff`](CITATION.cff).
 
 ### Citación provisional
 
-Montaña Acevedo, A. C. (2026). HUMANO: Framework metodológico para diseñar y auditar sistemas de inteligencia artificial centrados en las personas (v0.9.0).
+Montaña Acevedo, A. C. (2026). HUMANO: Framework metodológico para diseñar y auditar sistemas de inteligencia artificial centrados en las personas (v1.0.0).
+
+La referencia será actualizada con el DOI oficial después de la publicación en Zenodo.
 
 Para citar el dataset del caso demostrativo:
 
