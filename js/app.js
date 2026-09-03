@@ -39,6 +39,14 @@
     });
   });
 
+  document.querySelectorAll(".apply-card").forEach((card) => {
+    const summary = card.querySelector("summary");
+    if (!summary) return;
+    const sync = () => summary.setAttribute("aria-expanded", String(card.open));
+    sync();
+    card.addEventListener("toggle", sync);
+  });
+
   function initReveal() {
     const items = document.querySelectorAll(
       ".dim-card, .kpi-card, .sem-item, .meta-card, .compare-card, .bridge-item, .decision-card, .fact-card, .metric-def"
@@ -203,19 +211,10 @@
 
     const parts = [
       `<p><strong>Desempeño.</strong> La mayor accuracy corresponde a ${acc.grupo} (${pct(acc.accuracy)}).</p>`,
-      `<p><strong>Selección.</strong> La mayor selection rate corresponde a ${selMax.grupo} (${pct(selMax.selection_rate)}); la menor, a ${selMin.grupo} (${pct(selMin.selection_rate)}).</p>`,
-      `<p><strong>Errores.</strong> El mayor FPR corresponde a ${fpr.grupo} (${pct(fpr.fpr)}) y el mayor FNR a ${fnr.grupo} (${pct(fnr.fnr)}).</p>`,
+      `<p><strong>Selección.</strong> Hay diferencias de Selection Rate: ${selMax.grupo} (${pct(selMax.selection_rate)}) frente a ${selMin.grupo} (${pct(selMin.selection_rate)}).</p>`,
+      `<p><strong>Errores.</strong> Hay diferencias en FPR y FNR. El mayor FPR corresponde a ${fpr.grupo} (${pct(fpr.fpr)}) y el mayor FNR a ${fnr.grupo} (${pct(fnr.fnr)}).</p>`,
+      `<p><strong>Conclusión.</strong> Una accuracy alta no implica necesariamente menor impacto de error. Estas diferencias deben interpretarse como señales para investigar y no como conclusiones causales.</p>`,
     ];
-
-    if (acc.grupo === fnr.grupo) {
-      parts.push(
-        `<p>La mayor accuracy corresponde a ${acc.grupo}, pero este grupo también presenta el FNR más alto. Esto evidencia que una accuracy alta no implica necesariamente menor impacto de error.</p>`
-      );
-    }
-
-    parts.push(
-      "<p>Estas diferencias deben interpretarse como señales para investigar y no como conclusiones causales.</p>"
-    );
 
     body.innerHTML = parts.join("");
     box.hidden = false;

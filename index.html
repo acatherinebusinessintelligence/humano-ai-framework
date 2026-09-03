@@ -130,8 +130,8 @@
       <div class="apply-list">
 
         <details class="apply-card" data-letter="H" open>
-          <summary><span class="apply-letter" aria-hidden="true">H</span> Humanizar el propósito</summary>
-          <div class="apply-body">
+          <summary aria-expanded="true" aria-controls="apply-h-body"><span class="apply-letter" aria-hidden="true">H</span> Humanizar el propósito</summary>
+          <div class="apply-body" id="apply-h-body">
             <p class="apply-q"><strong>Pregunta HUMANO.</strong> ¿Para qué se utilizará la IA y qué consecuencias puede producir?</p>
             <p><strong>Qué analizamos.</strong> El propósito de un sistema que predice una categoría de ingreso.</p>
             <p><strong>Por qué importa.</strong> Una predicción sobre ingresos puede parecer puramente técnica, pero en un contexto real podría utilizarse para decisiones relacionadas con acceso, elegibilidad, priorización o segmentación.</p>
@@ -144,26 +144,27 @@
         </details>
 
         <details class="apply-card" data-letter="U">
-          <summary><span class="apply-letter" aria-hidden="true">U</span> Ubicar personas e impactos</summary>
-          <div class="apply-body">
+          <summary aria-expanded="false" aria-controls="apply-u-body"><span class="apply-letter" aria-hidden="true">U</span> Ubicar personas e impactos</summary>
+          <div class="apply-body" id="apply-u-body">
             <p class="apply-q"><strong>Pregunta HUMANO.</strong> ¿Quién está representado y quién puede verse afectado?</p>
             <p><strong>Qué analizamos.</strong> Representación y resultados por grupos.</p>
             <p><strong>Por qué importa.</strong> Un modelo puede presentar buen desempeño global y errores distintos entre grupos.</p>
             <p><strong>Qué hicimos en este laboratorio.</strong> Auditamos métricas por sexo y categoría racial.</p>
-            <p><strong>Qué evidencia observamos.</strong> Número de registros por grupo, accuracy, selection rate, FPR y FNR, mostrados más abajo en la auditoría.</p>
+            <p><strong>Qué evidencia observamos.</strong> Número de registros por grupo, accuracy, Selection Rate, FPR y FNR, mostrados más abajo en la auditoría.</p>
             <p class="can"><strong>Qué podemos concluir.</strong> Existen diferencias observables entre grupos que requieren análisis.</p>
             <p class="cannot"><strong>Qué NO podemos concluir.</strong> Que esas diferencias demuestren causalidad o discriminación.</p>
           </div>
         </details>
 
         <details class="apply-card" data-letter="M">
-          <summary><span class="apply-letter" aria-hidden="true">M</span> Minimizar datos y riesgos</summary>
-          <div class="apply-body">
+          <summary aria-expanded="false" aria-controls="apply-m-body"><span class="apply-letter" aria-hidden="true">M</span> Minimizar datos y riesgos</summary>
+          <div class="apply-body" id="apply-m-body">
             <p class="apply-q"><strong>Pregunta HUMANO.</strong> ¿Qué datos son realmente necesarios y qué riesgos pueden introducir?</p>
             <p><strong>Qué analizamos.</strong> Atributos sensibles y posibles proxies.</p>
+            <p class="proxy-note">Un proxy es una variable que puede contener indirectamente información asociada a un atributo sensible, aunque ese atributo no se utilice de forma explícita. En este laboratorio se trata como una señal para investigar una relación potencial, no como una prueba de que una variable concreta sea proxy.</p>
             <p><strong>Por qué importa.</strong> Eliminar una variable sensible no elimina necesariamente la información asociada a ella.</p>
             <p><strong>Qué hicimos en este laboratorio.</strong> Identificamos variables sensibles como <code>sex</code> y <code>race</code> y comparamos un modelo original con otro sin esos atributos.</p>
-            <p><strong>Qué evidencia observamos.</strong> Presencia de atributos sensibles y comparación de accuracy global entre ambos modelos. El inventario completo de variables y el análisis de proxies se documentan en el notebook.</p>
+            <p><strong>Qué evidencia observamos.</strong> Presencia de atributos sensibles y comparación de accuracy global entre ambos modelos. El inventario de variables y el análisis de posibles proxies se documentan en el notebook.</p>
             <p class="can"><strong>Qué podemos concluir.</strong> La retirada de atributos sensibles puede modificar el modelo, pero no garantiza eliminar patrones asociados.</p>
             <p class="cannot"><strong>Qué NO podemos concluir.</strong> Que eliminar <code>sex</code> y <code>race</code> produce automáticamente fairness.</p>
             <a class="cta-kaggle" href="https://www.kaggle.com/code/alejandramontana/humano-adult-census-kaggle" target="_blank" rel="noopener">Ver análisis técnico completo en Kaggle ↗</a>
@@ -171,8 +172,8 @@
         </details>
 
         <details class="apply-card" data-letter="A">
-          <summary><span class="apply-letter" aria-hidden="true">A</span> Asegurar autonomía y transparencia</summary>
-          <div class="apply-body">
+          <summary aria-expanded="false" aria-controls="apply-a-body"><span class="apply-letter" aria-hidden="true">A</span> Asegurar autonomía y transparencia</summary>
+          <div class="apply-body" id="apply-a-body">
             <p class="apply-q"><strong>Pregunta HUMANO.</strong> ¿Podemos explicar y cuestionar las decisiones del sistema?</p>
             <p><strong>Qué analizamos.</strong> Interpretabilidad del modelo.</p>
             <p><strong>Por qué importa.</strong> Una persona afectada por una decisión debería poder comprender al menos los factores principales que intervienen.</p>
@@ -185,8 +186,8 @@
         </details>
 
         <details class="apply-card" data-letter="N">
-          <summary><span class="apply-letter" aria-hidden="true">N</span> Nombrar responsables</summary>
-          <div class="apply-body">
+          <summary aria-expanded="false" aria-controls="apply-n-body"><span class="apply-letter" aria-hidden="true">N</span> Nombrar responsables</summary>
+          <div class="apply-body" id="apply-n-body">
             <p class="apply-q"><strong>Pregunta HUMANO.</strong> ¿Quién responde por los datos, el modelo y sus decisiones?</p>
             <p><strong>Qué analizamos.</strong> Gobernanza y responsabilidades.</p>
             <p><strong>Por qué importa.</strong> Las decisiones de un sistema de IA no pueden atribuirse al “algoritmo”.</p>
@@ -198,12 +199,12 @@
         </details>
 
         <details class="apply-card" data-letter="O">
-          <summary><span class="apply-letter" aria-hidden="true">O</span> Observar, auditar y corregir</summary>
-          <div class="apply-body">
+          <summary aria-expanded="false" aria-controls="apply-o-body"><span class="apply-letter" aria-hidden="true">O</span> Observar, auditar y corregir</summary>
+          <div class="apply-body" id="apply-o-body">
             <p class="apply-q"><strong>Pregunta HUMANO.</strong> ¿El sistema funciona de manera consistente entre grupos y qué hacemos cuando encontramos diferencias?</p>
             <p><strong>Qué analizamos.</strong> Desempeño global y errores por grupo.</p>
             <p><strong>Por qué importa.</strong> Las métricas globales pueden ocultar impactos diferentes.</p>
-            <p><strong>Qué hicimos en este laboratorio.</strong> Calculamos accuracy, selection rate, FPR y FNR por grupos de sexo y categoría racial.</p>
+            <p><strong>Qué hicimos en este laboratorio.</strong> Calculamos accuracy, Selection Rate, FPR y FNR por grupos de sexo y categoría racial.</p>
             <p><strong>Qué evidencia observamos.</strong> Las tablas y gráficos de la sección de auditoría.</p>
             <p class="can"><strong>Qué podemos concluir.</strong> Las métricas muestran patrones que justifican investigación adicional.</p>
             <p class="cannot"><strong>Qué NO podemos concluir.</strong> Que exista discriminación causal solamente por diferencias de métricas.</p>
@@ -223,7 +224,6 @@
           <p><strong>Objetivo técnico:</strong> predecir si el ingreso anual de una persona supera USD&nbsp;50.000.</p>
           <p class="caso-disclaimer">Este ejercicio no recomienda utilizar este modelo para tomar decisiones reales sobre personas.</p>
           <p class="caso-source">Fuente: UCI Adult Dataset · DOI: <code>10.24432/C5XW20</code></p>
-          <a class="cta-kaggle" href="https://www.kaggle.com/code/alejandramontana/humano-adult-census-kaggle" target="_blank" rel="noopener">Ver análisis técnico completo en Kaggle ↗</a>
         </div>
         <div class="caso-meta" id="caso-meta">
           <div class="meta-card">
@@ -307,9 +307,9 @@
         <p>Accuracy resume cuántas predicciones fueron correctas en total, pero puede ocultar cómo se distribuyen los errores. Dos grupos pueden tener una accuracy similar y, al mismo tiempo, experimentar tasas muy diferentes de falsos positivos o falsos negativos.</p>
         <div class="metric-def-grid">
           <div class="metric-def"><h4>Accuracy</h4><p>Porcentaje total de predicciones correctas.</p></div>
-          <div class="metric-def"><h4>Selection Rate</h4><p>Proporción de personas clasificadas con resultado positivo por el modelo.</p></div>
-          <div class="metric-def"><h4>FPR</h4><p>Entre los casos realmente negativos, proporción clasificada erróneamente como positiva.</p></div>
-          <div class="metric-def"><h4>FNR</h4><p>Entre los casos realmente positivos, proporción clasificada erróneamente como negativa.</p></div>
+          <div class="metric-def"><h4>Selection Rate (tasa de selección)</h4><p>Proporción de personas clasificadas con resultado positivo por el modelo.</p></div>
+          <div class="metric-def"><h4>False Positive Rate (FPR)</h4><p>Entre los casos realmente negativos, proporción clasificada erróneamente como positiva.</p></div>
+          <div class="metric-def"><h4>False Negative Rate (FNR)</h4><p>Entre los casos realmente positivos, proporción clasificada erróneamente como negativa.</p></div>
         </div>
       </div>
 
@@ -393,6 +393,7 @@
         </div>
         <p class="audit-note">Las diferencias observadas son señales para investigar; por sí solas no demuestran causalidad ni discriminación.</p>
         <p class="audit-note">Las métricas de grupos con tamaños pequeños deben interpretarse con especial cautela.</p>
+        <p class="audit-note">El tamaño de muestra (N) debe leerse junto con las métricas antes de comparar grupos.</p>
       </div>
 
       <div class="audit-block" id="audit-compare">
@@ -449,20 +450,23 @@
     <div class="container">
       <h2 class="section-title">Decisión HUMANO</h2>
       <p class="section-intro">El framework no produce una certificación automática. La decisión es un juicio informado a partir de evidencia, no un sello técnico.</p>
+      <p class="decision-result-label">Resultado pedagógico del caso demostrativo</p>
       <div class="decision-grid">
         <div class="decision-card">
           <span class="decision-name">Aprobar</span>
         </div>
         <div class="decision-card decision-active" aria-current="true">
+          <span class="decision-badge">Seleccionado</span>
           <span class="decision-name">Aprobar con condiciones</span>
         </div>
         <div class="decision-card">
           <span class="decision-name">No aprobar todavía</span>
         </div>
       </div>
+      <p class="decision-explain">En este caso, HUMANO no identifica evidencia suficiente para considerar cerrado el análisis. El sistema requeriría controles adicionales, revisión de datos y una nueva auditoría antes de cualquier uso real. Este resultado no afirma que el modelo pueda desplegarse.</p>
       <p class="decision-disclaimer">Esta salida es pedagógica y no constituye una certificación, auditoría regulatoria ni conclusión jurídica.</p>
       <ul class="decision-reasons">
-        <li>Existen diferencias en tasas de selección.</li>
+        <li>Existen diferencias en Selection Rate.</li>
         <li>Existen diferencias en FPR y FNR.</li>
         <li>Retirar atributos sensibles no demuestra por sí solo una mejora.</li>
         <li>Se requiere una nueva auditoría después de cualquier intervención.</li>
@@ -487,13 +491,13 @@
   <section id="semaforo" class="section section-alt">
     <div class="container">
       <h2 class="section-title">Semáforo HUMANO</h2>
-      <p class="section-intro">Cobertura metodológica del laboratorio. Este semáforo describe la cobertura metodológica del ejercicio; no es una certificación.</p>
+      <p class="section-intro">Este semáforo describe la cobertura metodológica del ejercicio; no es una certificación.</p>
       <div class="semaforo-grid" id="semaforo-grid">
         <div class="sem-item sem-green"><span class="sem-letter" aria-label="H">H</span><span class="sem-status">Propósito analizado</span></div>
         <div class="sem-item sem-green"><span class="sem-letter" aria-label="U">U</span><span class="sem-status">Impactos observados</span></div>
         <div class="sem-item sem-yellow"><span class="sem-letter" aria-label="M">M</span><span class="sem-status">Revisión de datos requerida</span></div>
         <div class="sem-item sem-green"><span class="sem-letter" aria-label="A">A</span><span class="sem-status">Transparencia evaluada</span></div>
-        <div class="sem-item sem-green"><span class="sem-letter" aria-label="N">N</span><span class="sem-status">Gobernanza definida</span></div>
+        <div class="sem-item sem-green"><span class="sem-letter" aria-label="N">N</span><span class="sem-status">Responsabilidades identificadas</span></div>
         <div class="sem-item sem-green"><span class="sem-letter" aria-label="O">O</span><span class="sem-status">Auditoría ejecutada</span></div>
       </div>
     </div>
